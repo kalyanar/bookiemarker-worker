@@ -20,7 +20,7 @@ class Scraper:
         complete_url = url
         try:
             # get summary
-            print "Retrieving page summary of %s... " % url
+            print("Retrieving page summary of %s... " % url)
 
             parser = HtmlParser.from_url(complete_url, Tokenizer(LANGUAGE))
             stemmer = Stemmer(LANGUAGE)
@@ -32,10 +32,10 @@ class Scraper:
             # handle utf8
             url_summary = unicode(url_summary).encode('utf8')
 
-        except Exception, e:
+        except Exception as e:
             url_summary = "Could not scrape summary. Reason: %s" % e.message
 
-        print "Done: %s = %s" % (url, url_summary)
+        print("Done: %s = %s" % (url, url_summary))
 
         # create scraping result
         scraping_result = ScrapingResult()

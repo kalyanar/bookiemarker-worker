@@ -10,7 +10,7 @@ channel = connection.channel()
 tasks_queue = channel.queue_declare(queue='tasks.queue', durable=True)
 scraping_result_queue = channel.queue_declare(queue='scrapingresult.queue', durable=True)
 
-print ' [*] Waiting for tasks. To exit press CTRL+C'
+print('[*] Waiting for tasks. To exit press CTRL+C')
 
 def publish_result(scraping_result):
     j = json.dumps(scraping_result.__dict__)
