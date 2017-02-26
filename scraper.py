@@ -29,11 +29,9 @@ class Scraper:
             summarizer.stop_words = get_stop_words(LANGUAGE)
 
             url_summary = ''.join(str(sentence) for sentence in summarizer(parser.document, SENTENCES_COUNT))
-            # handle utf8
-            url_summary = unicode(url_summary).encode('utf8')
 
         except Exception as e:
-            url_summary = "Could not scrape summary. Reason: %s" % e.message
+            url_summary = "Could not scrape summary. Reason: %s" % e
 
         print("Done: %s = %s" % (url, url_summary))
 

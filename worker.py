@@ -12,10 +12,12 @@ scraping_result_queue = channel.queue_declare(queue='scrapingresult.queue', dura
 
 print('[*] Waiting for tasks. To exit press CTRL+C')
 
+
 def publish_result(scraping_result):
     j = json.dumps(scraping_result.__dict__)
     properties = pika.BasicProperties(content_type="application/json")
     channel.basic_publish(exchange='', routing_key='scrapingresult.queue', body=j, properties=properties)
+
 
 def callback(ch, method, properties, body):
     url = json.loads(body)['url']
