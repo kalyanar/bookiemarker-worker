@@ -20,7 +20,7 @@ def publish_result(scraping_result):
 
 
 def callback(ch, method, properties, body):
-    url = json.loads(body)['url']
+    url = json.loads(body.decode('utf-8'))['url']
     scraper = Scraper()
     result = scraper.scrape(url.strip())
     publish_result(result)
