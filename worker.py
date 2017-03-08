@@ -3,7 +3,7 @@ import json
 from scraper import Scraper
 
 credentials = pika.PlainCredentials("user", "password")
-parameters = pika.ConnectionParameters(host='localhost', credentials=credentials)
+parameters = pika.ConnectionParameters(host='localhost', port=7234, credentials=credentials)
 
 connection = pika.BlockingConnection(parameters)
 channel = connection.channel()
