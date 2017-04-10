@@ -20,8 +20,8 @@ class Scraper:
             a.download()
             a.parse()
             a.nlp()
-            scraping_result.title = a.title
-            scraping_result.thumbnail = "100x100.png" if a.top_image is not None else a.top_image
+            scraping_result.title = url if not a.title else a.title
+            scraping_result.thumbnail = "100x100.png" if not a.top_image else a.top_image
             scraping_result.summary = a.summary
         except Exception as e:
             scraping_result.summary = "Could not scrape summary. Reason: %s" % e
