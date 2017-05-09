@@ -23,7 +23,7 @@ channel = connection.channel()
 tasks_queue = channel.queue_declare(queue='tasks.queue', durable=True)
 scraping_result_queue = channel.queue_declare(queue='scrapingresult.queue', durable=True)
 
+print('[*] Waiting for tasks. To exit press CTRL+C')
+
 channel.basic_consume(callback, queue='tasks.queue')
 channel.start_consuming()
-
-print('[*] Waiting for tasks. To exit press CTRL+C')
